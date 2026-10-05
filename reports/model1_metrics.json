@@ -1,0 +1,154 @@
+{
+  "trained_at": "2026-10-06 01:11:38",
+  "best_model": "random_forest",
+  "best_r2": 0.9995,
+  "feature_columns": [
+    "TROPOMI_NO2",
+    "TROPOMI_CO",
+    "TROPOMI_SO2",
+    "TROPOMI_O3",
+    "TROPOMI_HCHO",
+    "MODIS_AOD_550",
+    "MODIS_LST_Day",
+    "MODIS_LST_Night",
+    "MODIS_NDVI",
+    "MERRA2_PM25_RH35",
+    "MERRA2_AOD_TOT",
+    "MERRA2_AOD_BC",
+    "MERRA2_AOD_DUST",
+    "ERA5_T2M",
+    "ERA5_RH",
+    "ERA5_WIND_SPEED",
+    "ERA5_SP",
+    "ERA5_TP",
+    "ERA5_BLH",
+    "ERA5_VENTILATION_INDEX",
+    "fire_count_25km_lag0",
+    "fire_frp_25km_lag0",
+    "fire_count_50km_lag0",
+    "fire_frp_50km_lag0",
+    "fire_count_100km_lag1",
+    "fire_frp_100km_lag1",
+    "fire_count_200km_lag2",
+    "fire_frp_200km_lag2",
+    "doy_sin",
+    "doy_cos",
+    "day_of_week",
+    "is_weekend",
+    "latitude",
+    "longitude"
+  ],
+  "n_samples": 13140,
+  "models": {
+    "linear_baseline": {
+      "model_name": "linear_baseline",
+      "model_path": "data\\processed\\models\\model1_linear_baseline.joblib",
+      "random_cv": {
+        "r2": 0.9257,
+        "rmse": 18.99,
+        "mae": 12.98,
+        "bias": 0.01
+      },
+      "spatial_cv": {
+        "r2": 0.8825,
+        "rmse": 23.88,
+        "mae": 15.95,
+        "bias": 1.4
+      },
+      "temporal_cv": {
+        "r2": -595.8507,
+        "rmse": 1702.23,
+        "mae": 126.5,
+        "bias": 106.26
+      }
+    },
+    "random_forest": {
+      "model_name": "random_forest",
+      "model_path": "data\\processed\\models\\model1_random_forest.joblib",
+      "random_cv": {
+        "r2": 0.9995,
+        "rmse": 1.57,
+        "mae": 0.68,
+        "bias": 0.06
+      },
+      "spatial_cv": {
+        "r2": 0.9382,
+        "rmse": 17.32,
+        "mae": 6.67,
+        "bias": 1.56
+      },
+      "temporal_cv": {
+        "r2": 0.7552,
+        "rmse": 34.47,
+        "mae": 26.21,
+        "bias": -8.88
+      }
+    },
+    "xgboost": {
+      "model_name": "xgboost",
+      "model_path": "data\\processed\\models\\model1_xgboost.joblib",
+      "random_cv": {
+        "r2": 0.9993,
+        "rmse": 1.85,
+        "mae": 1.28,
+        "bias": 0.01
+      },
+      "spatial_cv": {
+        "r2": 0.9439,
+        "rmse": 16.5,
+        "mae": 6.74,
+        "bias": 1.62
+      },
+      "temporal_cv": {
+        "r2": 0.727,
+        "rmse": 36.4,
+        "mae": 27.44,
+        "bias": -13.23
+      }
+    },
+    "lightgbm": {
+      "model_name": "lightgbm",
+      "model_path": "data\\processed\\models\\model1_lightgbm.joblib",
+      "random_cv": {
+        "r2": 0.9994,
+        "rmse": 1.7,
+        "mae": 1.19,
+        "bias": -0.0
+      },
+      "spatial_cv": {
+        "r2": 0.9466,
+        "rmse": 16.09,
+        "mae": 6.56,
+        "bias": 1.68
+      },
+      "temporal_cv": {
+        "r2": 0.7669,
+        "rmse": 33.64,
+        "mae": 25.95,
+        "bias": -10.22
+      }
+    },
+    "stacking_ensemble": {
+      "model_name": "stacking_ensemble",
+      "model_path": "data\\processed\\models\\model1_stacking_ensemble.joblib",
+      "random_cv": {
+        "r2": 0.9991,
+        "rmse": 2.1,
+        "mae": 1.4,
+        "bias": -0.01
+      },
+      "spatial_cv": {
+        "r2": 0.9424,
+        "rmse": 16.73,
+        "mae": 6.94,
+        "bias": 1.65
+      },
+      "temporal_cv": {
+        "r2": 0.7465,
+        "rmse": 35.08,
+        "mae": 26.6,
+        "bias": -10.62
+      }
+    }
+  }
+}

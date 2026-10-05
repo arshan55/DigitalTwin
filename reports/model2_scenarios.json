@@ -1,0 +1,86 @@
+{
+  "scenario_a_warming": {
+    "metadata": {
+      "date": "2023-11-05",
+      "delta_temp_c": 2.0,
+      "delta_precip_pct": -15.0,
+      "delta_fire_pct": 0.0,
+      "delta_emissions_pct": 0.0,
+      "disclaimer": "Statistical surrogate simulation: Delivers fast empirical response estimation. Not a coupled 3D Navier-Stokes general circulation model."
+    },
+    "summary_metrics": {
+      "mean_pm25_delta": 3.5,
+      "mean_aqi_delta": 8.29,
+      "mean_risk_delta": 0.006,
+      "baseline_severe_cells": 0,
+      "perturbed_severe_cells": 1315,
+      "net_severe_cells_avoided": -1315
+    },
+    "baseline": {
+      "mean_pm25": 87.5,
+      "mean_aqi": 157.9,
+      "mean_risk": 0.348
+    },
+    "perturbed": {
+      "mean_pm25": 90.9,
+      "mean_aqi": 166.2,
+      "mean_risk": 0.354
+    }
+  },
+  "scenario_b_fire_abatement": {
+    "metadata": {
+      "date": "2023-11-05",
+      "delta_temp_c": 0.0,
+      "delta_precip_pct": 0.0,
+      "delta_fire_pct": -50.0,
+      "delta_emissions_pct": 0.0,
+      "disclaimer": "Statistical surrogate simulation: Delivers fast empirical response estimation. Not a coupled 3D Navier-Stokes general circulation model."
+    },
+    "summary_metrics": {
+      "mean_pm25_delta": -4.17,
+      "mean_aqi_delta": -8.97,
+      "mean_risk_delta": -0.007,
+      "baseline_severe_cells": 0,
+      "perturbed_severe_cells": 0,
+      "net_severe_cells_avoided": 0
+    },
+    "baseline": {
+      "mean_pm25": 87.5,
+      "mean_aqi": 157.9,
+      "mean_risk": 0.348
+    },
+    "perturbed": {
+      "mean_pm25": 83.3,
+      "mean_aqi": 148.9,
+      "mean_risk": 0.341
+    }
+  },
+  "scenario_c_clean_air_transition": {
+    "metadata": {
+      "date": "2023-11-05",
+      "delta_temp_c": 0.0,
+      "delta_precip_pct": 0.0,
+      "delta_fire_pct": -50.0,
+      "delta_emissions_pct": -30.0,
+      "disclaimer": "Statistical surrogate simulation: Delivers fast empirical response estimation. Not a coupled 3D Navier-Stokes general circulation model."
+    },
+    "summary_metrics": {
+      "mean_pm25_delta": -27.91,
+      "mean_aqi_delta": -50.8,
+      "mean_risk_delta": -0.038,
+      "baseline_severe_cells": 0,
+      "perturbed_severe_cells": 0,
+      "net_severe_cells_avoided": 0
+    },
+    "baseline": {
+      "mean_pm25": 87.5,
+      "mean_aqi": 157.9,
+      "mean_risk": 0.348
+    },
+    "perturbed": {
+      "mean_pm25": 59.5,
+      "mean_aqi": 107.1,
+      "mean_risk": 0.31
+    }
+  }
+}
