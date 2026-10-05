@@ -1,0 +1,203 @@
+Model 1 Details
+Research Papers
+1. Improved Daily PM2.5 Estimates in India Uses TROPOMI NO₂/CO, MODIS AOD, MERRA-2, meteorological data, and CPCB ground observations with machine learning to estimate daily surface PM2.5 across India.
+Paper: Full Research Paper – PMC Code: GitHub Implementation
+
+2. Machine Learning Based Ozone Sub-Index Estimation and Composite AQI Forecasting Using Sentinel-5P Uses Sentinel-5P/TROPOMI data and the CPCB National AQI framework for pollutant sub-index estimation and AQI forecasting.
+Paper: Full Research Paper – Springer Nature
+
+3. Machine Learning + MERRA-2 for Surface PM2.5 over India Uses MERRA-2 aerosol and meteorological parameters with ground observations and compares XGBoost, Random Forest, LightGBM, and stacking models.
+Paper: ScienceDirect – Research Paper
+
+4. Surface PM2.5 Estimation over the Indo-Gangetic Basin Uses CPCB stations, MERRA-2, meteorological variables, Random Forest, Extra Trees, LightGBM, and stacking ensemble models for surface PM2.5 estimation.
+Paper: Scientific Reports – Full Research Paper Free Full Text: PMC
+
+5. Spatio-Temporal Air Quality Analysis and PM2.5 Prediction over Hyderabad Using AI Compares Linear Regression, Decision Tree, KNN, Random Forest, XGBoost, and LSTM for PM2.5 prediction and air-quality analysis.
+Paper: ScienceDirect – Research Paper
+Datasets and their Research References
+
+
+
+
+Dataset
+
+Purpose in Your Project
+
+Dataset Link
+
+Related Research Paper
+
+Sentinel-5P TROPOMI (NO₂, CO, SO₂, O₃, HCHO)
+
+Main satellite pollutant measurements
+
+Copernicus Data Space Ecosystem (TROPOMI Download)
+
+Satellite Derived Air Pollution Climatology Over India (2024)
+
+TROPOMI HCHO Product
+
+Formaldehyde hotspot detection
+
+TROPOMI Formaldehyde Dataset Documentation
+
+HCHO and VOC emission studies based on TROPOMI HCHO
+
+CPCB Air Quality Data
+
+Ground-truth validation for AQI and PM2.5
+
+CPCB AQI Data Repository
+
+Improved Daily PM2.5 Estimates in India (2025)
+
+IMD Meteorological Data
+
+Temperature, humidity, wind speed
+
+India Meteorological Department Open Data Portal
+
+Used in most satellite-to-surface AQI estimation studies
+
+NASA MERRA-2 Reanalysis
+
+Meteorological and aerosol variables
+
+NASA MERRA-2 Data Access
+
+PM2.5 estimation studies using ML and reanalysis data
+
+MERRA-2 Aerosol Diagnostics
+
+PM2.5 and aerosol-related features
+
+MERRA-2 Aerosol Diagnostics Dataset
+
+Surface PM2.5 estimation research
+
+MODIS AOD (Aerosol Optical Depth)
+
+PM2.5 estimation
+
+NASA MODIS Data Portal
+
+Improved Daily PM2.5 Estimates in India (2025)
+
+VIIRS Fire Data
+
+Biomass-burning validation
+
+NASA FIRMS Fire Data Portal
+
+Biomass-burning and crop-residue burning studies
+Model 2 Details
+Research Papers
+1. Big Data in Earth System Science and Progress Towards a Digital TwinA major review explaining the architecture of an Earth-system digital twin, including multisource Earth observations, reanalysis, data assimilation, machine learning, prediction, and decision-support systems. This is the main conceptual reference for our Digital Twin architecture.
+Paper: Nature Reviews Earth & Environment – Full Paper
+
+2. Digital Twin for Climate-Resilient Urban Planning: Modeling and Mitigation of Urban Heat IslandsA recent Indian study that combines remote sensing, land-surface variables, Random Forest prediction and a 3D Digital Twin for climate-resilient planning. It is particularly relevant to our idea of connecting environmental data + AI prediction + Digital Twin visualization.
+Paper: ISPRS Archives – Full Paper
+
+3. An Explainable Deep Learning Framework for Sub-Seasonal to Seasonal Agricultural Drought Prediction over IndiaUses LSTM-based deep learning, soil moisture, land-atmosphere variables and climate drivers to predict drought across India at 1–3 month lead times. This is highly relevant for our AI forecasting + climate-risk prediction component.
+Paper: ScienceDirect – Full Research Paper
+
+4. Transfer Learning for Transformer-Based Drought Forecasting Across Diverse Precipitation Products in IndiaUses Transformer-based forecasting and multiple precipitation datasets, including ERA5, to predict drought across India's different climatic zones. It is useful for designing the future forecasting layer of our Digital Twin.
+Paper: Wiley – Full Research Paper
+
+
+Datasets and their Research References
+
+
+
+
+Dataset
+
+Purpose in Model 2
+
+Dataset Link
+
+Related Research
+
+ERA5 Reanalysis
+
+Main climate/atmospheric dataset — temperature, rainfall, humidity, wind, pressure, radiation and other atmospheric variables. It provides long-term hourly climate data needed for forecasting and climate-state estimation.
+
+Copernicus ERA5 Dataset
+
+Earth-System Digital Twin Research
+
+ERA5-Land
+
+Main land-surface dataset — soil moisture, runoff, evapotranspiration and other land variables. Particularly important for drought, flood and land-condition prediction.
+
+Copernicus ERA5-Land Dataset
+
+ERA5-Land Documentation
+
+IMD Climate Data
+
+India-specific temperature and rainfall observations for validation and India-focused climate modelling. This helps compare AI predictions against observations over India.
+
+IMD Data Portal
+
+Used as Indian observational data in climate and drought modelling research.
+
+MODIS Land Surface Temperature & Vegetation
+
+Satellite-based land-surface temperature and vegetation information for heat-risk, environmental-condition and spatial climate analysis.
+
+NASA MODIS Data Products
+
+MODIS Land Surface Temperature Product
+
+
+
+
+Novelty and Research Contribution
+Existing studies mainly focus on individual pollutant estimation, AQI prediction, or climate-variable forecasting using satellite, ground, and meteorological data. The novelty of Model 1 is the integration of multi-pollutant surface AQI estimation with HCHO hotspot detection and fire-based pollution-source analysis in a unified India-wide framework.
+The novelty of Model 2 is the development of an AI-powered Climate Digital Twin of India that integrates climate variables with Model 1 air-quality outputs to provide forecasting, climate-risk assessment, and what-if scenario simulation. Together, both models create an integrated system for monitoring, predicting, and assessing India's air-quality and climate conditions.
+
+Combined Architecture Overview
+
+
+Combined Architecture Overview Layer
+
+Model 1
+
+Model 2
+
+Primary Goal
+
+Surface AQI & HCHO Monitoring
+
+Climate Digital Twin & Forecasting
+
+Main Datasets
+
+TROPOMI, MODIS, CPCB, IMD, MERRA-2
+
+ERA5, ERA5-Land, IMD, MODIS, Model 1 Outputs
+
+Core AI Models
+
+XGBoost, Random Forest
+
+LSTM, XGBoost, Random Forest
+
+Key Analysis
+
+AQI Estimation, HCHO Hotspots
+
+Climate Forecasting, Risk Assessment
+
+Visualization
+
+AQI & Hotspot Maps
+
+Climate & Risk Maps
+
+Final Output
+
+Air Quality Intelligence
+
+Climate Intelligence & Decision Support

@@ -1,0 +1,124 @@
+# ========================================================
+# India Air Quality & Climate Digital Twin - Pilot Config
+# ========================================================
+
+project:
+  name: "India Air Quality & Climate Digital Twin"
+  version: "1.0.0"
+  random_seed: 42
+
+spatial:
+  domain_name: "all_india_coarse"
+  # [lon_min, lat_min, lon_max, lat_max]
+  bbox: [68.0, 6.0, 97.5, 37.5]
+  resolution_deg: 0.25
+  crs: "EPSG:4326"
+
+temporal:
+  start_date: "2022-01-01"
+  end_date: "2023-12-31"
+  timestep: "daily"
+  # Pilot sample generator date range for quick offline runs
+  sample_start_date: "2023-10-01"
+  sample_end_date: "2023-11-30"
+
+data_paths:
+  raw: "data/raw"
+  interim: "data/interim"
+  processed: "data/processed"
+  sample: "data/sample"
+  reports: "reports"
+
+ingestion:
+  use_sample_data: true
+  tropomi:
+    variables: ["NO2", "CO", "SO2", "O3", "HCHO"]
+    qa_threshold: 0.5
+    max_cloud_fraction: 0.3
+  modis:
+    products: ["MCD19A2", "MOD11A1", "MOD13A2"]
+    aod_wavelength: "550nm"
+    aod_qa_flags: ["best_quality"]
+  merra2:
+    collection: "M2T1NXAER"
+    variables: ["PM25_RH35", "TOTEXTTAU", "BCEXTTAU", "OCEXTTAU", "DUEXTTAU", "SUEXTTAU"]
+  era5:
+    variables:
+      - "2m_temperature"
+      - "2m_dewpoint_temperature"
+      - "10m_u_component_of_wind"
+      - "10m_v_component_of_wind"
+      - "surface_pressure"
+      - "total_precipitation"
+      - "boundary_layer_height"
+  cpcb:
+    target_pollutant: "PM2.5"
+    auxiliary_pollutants: ["PM10", "NO2", "SO2", "CO", "O3"]
+    min_daily_valid_hours: 16
+    max_pm25_threshold: 999.0
+  viirs:
+    instrument: "VIIRS_SNPP_NRT"
+    confidence_min: "nominal"
+    buffer_radii_km: [25, 50, 100, 200]
+
+model1:
+  target: "PM2.5"
+  models_to_train:
+    - "linear_baseline"
+    - "random_forest"
+    - "xgboost"
+    - "lightgbm"
+  cv_strategies:
+    - "kfold"
+    - "spatial_lso"       # Leave-Station-Out
+    - "temporal_lso"      # Leave-Season-Out
+  n_splits: 5
+  hcho_hotspot:
+    baseline_months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    z_score_threshold: 2.0
+    dbscan_eps_deg: 0.5
+    dbscan_min_samples: 3
+  fire_attribution:
+    case_study_start: "2023-10-15"
+    case_study_end: "2023-11-20"
+    lags_days: [0, 1, 2, 3]
+
+model2:
+  state_variables:
+    - "t2m"
+    - "d2m"
+    - "u10"
+    - "v10"
+    - "tp"
+    - "lst_day"
+    - "ndvi"
+    - "pm25_surface"
+    - "cpcb_aqi"
+  forecasting:
+    horizons_days: [7, 14, 30]
+    lookback_days: 14
+    lstm_hidden_dim: 64
+    lstm_num_layers: 2
+    dropout: 0.2
+    batch_size: 32
+    epochs: 25
+    learning_rate: 0.001
+  risk_indices:
+    weights:
+      heat: 0.35
+      drought: 0.35
+      air_quality: 0.30
+    heat_threshold_c: 40.0
+    spi_drought_threshold: -1.5
+    aqi_severe_threshold: 400.0
+  scenario_engine:
+    ranges:
+      delta_temp_c: [-2.0, 5.0]
+      delta_precip_pct: [-50.0, 50.0]
+      delta_fire_pct: [-100.0, 50.0]
+      delta_emissions_pct: [-50.0, 50.0]
+
+api:
+  host: "127.0.0.1"
+  port: 8000
+  prefix: "/api/v1"

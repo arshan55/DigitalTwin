@@ -1,0 +1,251 @@
+{
+  "pm25": {
+    "7_day": {
+      "target": "pm25",
+      "horizon_days": 7,
+      "test_samples": 142,
+      "persistence": {
+        "rmse": 21.24,
+        "mae": 15.22,
+        "r2": 0.9212
+      },
+      "climatology": {
+        "rmse": 79.2,
+        "mae": 70.03,
+        "r2": -0.0961
+      },
+      "xgboost": {
+        "rmse": 2.66,
+        "mae": 1.59,
+        "r2": 0.9988,
+        "skill_score_vs_persistence": 0.875
+      },
+      "lstm": {
+        "rmse": 25.0,
+        "mae": 18.58,
+        "r2": 0.8908,
+        "skill_score_vs_persistence": -0.177
+      }
+    },
+    "14_day": {
+      "target": "pm25",
+      "horizon_days": 14,
+      "test_samples": 141,
+      "persistence": {
+        "rmse": 31.61,
+        "mae": 21.86,
+        "r2": 0.8311
+      },
+      "climatology": {
+        "rmse": 79.53,
+        "mae": 70.26,
+        "r2": -0.0685
+      },
+      "xgboost": {
+        "rmse": 4.08,
+        "mae": 2.45,
+        "r2": 0.9972,
+        "skill_score_vs_persistence": 0.871
+      },
+      "lstm": {
+        "rmse": 38.42,
+        "mae": 26.65,
+        "r2": 0.7506,
+        "skill_score_vs_persistence": -0.215
+      }
+    },
+    "30_day": {
+      "target": "pm25",
+      "horizon_days": 30,
+      "test_samples": 138,
+      "persistence": {
+        "rmse": 48.23,
+        "mae": 34.23,
+        "r2": 0.6229
+      },
+      "climatology": {
+        "rmse": 79.62,
+        "mae": 70.09,
+        "r2": -0.0278
+      },
+      "xgboost": {
+        "rmse": 5.11,
+        "mae": 3.37,
+        "r2": 0.9958,
+        "skill_score_vs_persistence": 0.894
+      },
+      "lstm": {
+        "rmse": 50.63,
+        "mae": 35.21,
+        "r2": 0.5845,
+        "skill_score_vs_persistence": -0.05
+      }
+    }
+  },
+  "t2m": {
+    "7_day": {
+      "target": "t2m",
+      "horizon_days": 7,
+      "test_samples": 142,
+      "persistence": {
+        "rmse": 0.82,
+        "mae": 0.51,
+        "r2": 0.8244
+      },
+      "climatology": {
+        "rmse": 9.98,
+        "mae": 9.78,
+        "r2": -25.1334
+      },
+      "xgboost": {
+        "rmse": 0.07,
+        "mae": 0.04,
+        "r2": 0.9988,
+        "skill_score_vs_persistence": 0.915
+      },
+      "lstm": {
+        "rmse": 10.21,
+        "mae": 10.02,
+        "r2": -26.3886,
+        "skill_score_vs_persistence": -11.451
+      }
+    },
+    "14_day": {
+      "target": "t2m",
+      "horizon_days": 14,
+      "test_samples": 141,
+      "persistence": {
+        "rmse": 1.21,
+        "mae": 0.89,
+        "r2": 0.6735
+      },
+      "climatology": {
+        "rmse": 9.96,
+        "mae": 9.74,
+        "r2": -21.1609
+      },
+      "xgboost": {
+        "rmse": 0.11,
+        "mae": 0.06,
+        "r2": 0.9974,
+        "skill_score_vs_persistence": 0.909
+      },
+      "lstm": {
+        "rmse": 9.47,
+        "mae": 9.23,
+        "r2": -19.0365,
+        "skill_score_vs_persistence": -6.826
+      }
+    },
+    "30_day": {
+      "target": "t2m",
+      "horizon_days": 30,
+      "test_samples": 138,
+      "persistence": {
+        "rmse": 2.06,
+        "mae": 1.55,
+        "r2": 0.3379
+      },
+      "climatology": {
+        "rmse": 9.86,
+        "mae": 9.53,
+        "r2": -14.1302
+      },
+      "xgboost": {
+        "rmse": 0.16,
+        "mae": 0.1,
+        "r2": 0.9961,
+        "skill_score_vs_persistence": 0.922
+      },
+      "lstm": {
+        "rmse": 10.34,
+        "mae": 10.02,
+        "r2": -15.6477,
+        "skill_score_vs_persistence": -4.019
+      }
+    }
+  },
+  "tp": {
+    "7_day": {
+      "target": "tp",
+      "horizon_days": 7,
+      "test_samples": 142,
+      "persistence": {
+        "rmse": 3.95,
+        "mae": 1.51,
+        "r2": -0.3479
+      },
+      "climatology": {
+        "rmse": 3.41,
+        "mae": 2.12,
+        "r2": -0.0056
+      },
+      "xgboost": {
+        "rmse": 3.74,
+        "mae": 1.67,
+        "r2": -0.2123,
+        "skill_score_vs_persistence": 0.053
+      },
+      "lstm": {
+        "rmse": 2.91,
+        "mae": 1.46,
+        "r2": 0.2642,
+        "skill_score_vs_persistence": 0.263
+      }
+    },
+    "14_day": {
+      "target": "tp",
+      "horizon_days": 14,
+      "test_samples": 141,
+      "persistence": {
+        "rmse": 3.96,
+        "mae": 1.63,
+        "r2": -0.2795
+      },
+      "climatology": {
+        "rmse": 3.5,
+        "mae": 2.18,
+        "r2": -0.0011
+      },
+      "xgboost": {
+        "rmse": 4.43,
+        "mae": 2.06,
+        "r2": -0.597,
+        "skill_score_vs_persistence": -0.119
+      },
+      "lstm": {
+        "rmse": 3.0,
+        "mae": 1.65,
+        "r2": 0.2676,
+        "skill_score_vs_persistence": 0.242
+      }
+    },
+    "30_day": {
+      "target": "tp",
+      "horizon_days": 30,
+      "test_samples": 138,
+      "persistence": {
+        "rmse": 4.54,
+        "mae": 2.17,
+        "r2": -0.4716
+      },
+      "climatology": {
+        "rmse": 3.75,
+        "mae": 2.31,
+        "r2": -0.0029
+      },
+      "xgboost": {
+        "rmse": 4.31,
+        "mae": 2.43,
+        "r2": -0.3215,
+        "skill_score_vs_persistence": 0.051
+      },
+      "lstm": {
+        "rmse": 3.66,
+        "mae": 2.47,
+        "r2": 0.0449,
+        "skill_score_vs_persistence": 0.194
+      }
+    }
+  }
+}
