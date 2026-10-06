@@ -40,15 +40,15 @@ export default function ScenarioSandboxTab({ selectedDate }) {
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Slider Console */}
-        <div className="glass-panel rounded-xl p-5 border border-cyan-500/20 space-y-5">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-            <div className="flex items-center gap-2 font-orbitron font-bold text-sm text-cyan-400">
+        <div className="glass-panel rounded-xl p-5 border border-[#DDE7E4] bg-white shadow-sm space-y-5">
+          <div className="flex items-center justify-between border-b border-[#DDE7E4] pb-3">
+            <div className="flex items-center gap-2 font-orbitron font-bold text-sm text-[#278E7B]">
               <Sliders className="w-4 h-4" />
               <span>COUNTERFACTUAL CONTROLS</span>
             </div>
             <button
               onClick={() => { setDeltaTemp(0); setDeltaPrecip(0); setDeltaFire(0); setDeltaEmissions(0); }}
-              className="text-xs font-mono text-slate-500 hover:text-cyan-400"
+              className="text-xs font-mono text-[#527E75] hover:text-[#278E7B] font-bold"
             >
               Reset
             </button>
@@ -57,73 +57,73 @@ export default function ScenarioSandboxTab({ selectedDate }) {
           {/* Slider 1: Temperature */}
           <div>
             <div className="flex justify-between text-xs font-mono mb-1.5">
-              <span className="text-slate-300">🌡️ Temperature Perturbation</span>
-              <span className="text-amber-400 font-bold">{deltaTemp > 0 ? `+${deltaTemp}` : deltaTemp}°C</span>
+              <span className="text-[#133B34] font-bold">🌡️ Temperature Perturbation</span>
+              <span className="text-[#DEAC83] font-bold">{deltaTemp > 0 ? `+${deltaTemp}` : deltaTemp}°C</span>
             </div>
             <input
               type="range" min="-2.0" max="5.0" step="0.5"
               value={deltaTemp} onChange={(e) => setDeltaTemp(Number(e.target.value))}
-              className="w-full accent-amber-500 cursor-pointer"
+              className="w-full accent-[#DEAC83] cursor-pointer h-1.5 bg-[#EAE4D8] rounded-lg"
             />
           </div>
 
           {/* Slider 2: Precipitation */}
           <div>
             <div className="flex justify-between text-xs font-mono mb-1.5">
-              <span className="text-slate-300">🌧️ Precipitation Variation</span>
-              <span className="text-blue-400 font-bold">{deltaPrecip > 0 ? `+${deltaPrecip}` : deltaPrecip}%</span>
+              <span className="text-[#133B34] font-bold">🌧️ Precipitation Variation</span>
+              <span className="text-[#5CB7A8] font-bold">{deltaPrecip > 0 ? `+${deltaPrecip}` : deltaPrecip}%</span>
             </div>
             <input
               type="range" min="-50.0" max="50.0" step="5.0"
               value={deltaPrecip} onChange={(e) => setDeltaPrecip(Number(e.target.value))}
-              className="w-full accent-blue-500 cursor-pointer"
+              className="w-full accent-[#5CB7A8] cursor-pointer h-1.5 bg-[#EAE4D8] rounded-lg"
             />
           </div>
 
           {/* Slider 3: Fire Abatement */}
           <div>
             <div className="flex justify-between text-xs font-mono mb-1.5">
-              <span className="text-slate-300">🔥 Biomass Fire Abatement</span>
-              <span className="text-orange-400 font-bold">{deltaFire > 0 ? `+${deltaFire}` : deltaFire}%</span>
+              <span className="text-[#133B34] font-bold">🔥 Biomass Fire Abatement</span>
+              <span className="text-[#E05A47] font-bold">{deltaFire > 0 ? `+${deltaFire}` : deltaFire}%</span>
             </div>
             <input
               type="range" min="-100.0" max="50.0" step="10.0"
               value={deltaFire} onChange={(e) => setDeltaFire(Number(e.target.value))}
-              className="w-full accent-orange-500 cursor-pointer"
+              className="w-full accent-[#E05A47] cursor-pointer h-1.5 bg-[#EAE4D8] rounded-lg"
             />
           </div>
 
           {/* Slider 4: Anthropogenic Emissions */}
           <div>
             <div className="flex justify-between text-xs font-mono mb-1.5">
-              <span className="text-slate-300">🏭 Anthropogenic Emissions</span>
-              <span className="text-purple-400 font-bold">{deltaEmissions > 0 ? `+${deltaEmissions}` : deltaEmissions}%</span>
+              <span className="text-[#133B34] font-bold">🏭 Anthropogenic Emissions</span>
+              <span className="text-[#278E7B] font-bold">{deltaEmissions > 0 ? `+${deltaEmissions}` : deltaEmissions}%</span>
             </div>
             <input
               type="range" min="-50.0" max="50.0" step="5.0"
               value={deltaEmissions} onChange={(e) => setDeltaEmissions(Number(e.target.value))}
-              className="w-full accent-purple-500 cursor-pointer"
+              className="w-full accent-[#278E7B] cursor-pointer h-1.5 bg-[#EAE4D8] rounded-lg"
             />
           </div>
 
           {/* Quick Benchmark Presets */}
-          <div className="pt-2 border-t border-slate-800 space-y-2">
-            <div className="text-xs font-mono text-slate-500">POLICY BENCHMARKS:</div>
+          <div className="pt-2 border-t border-[#DDE7E4] space-y-2">
+            <div className="text-xs font-mono text-[#527E75] font-bold">POLICY BENCHMARKS:</div>
             <button
               onClick={() => { setDeltaTemp(2.0); setDeltaPrecip(-15.0); setDeltaFire(0); setDeltaEmissions(0); }}
-              className="w-full text-left px-3 py-2 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-300 text-xs font-mono hover:bg-amber-950/40 transition-colors"
+              className="w-full text-left px-3 py-2 rounded-lg bg-[#FDF2D9] border border-[#E8C56A] text-[#916508] text-xs font-mono font-bold hover:bg-[#FDF2D9]/80 transition-colors shadow-xs"
             >
               🌡️ Climate Shock (+2°C, -15% Rain)
             </button>
             <button
               onClick={() => { setDeltaTemp(0); setDeltaPrecip(0); setDeltaFire(-100); setDeltaEmissions(0); }}
-              className="w-full text-left px-3 py-2 rounded-lg bg-slate-900 border border-orange-500/30 text-orange-300 text-xs font-mono hover:bg-orange-950/40 transition-colors"
+              className="w-full text-left px-3 py-2 rounded-lg bg-[#F1D3B7]/40 border border-[#DEAC83] text-[#8C4F18] text-xs font-mono font-bold hover:bg-[#F1D3B7]/70 transition-colors shadow-xs"
             >
               🔥 Stubble Elimination (-100% Fires)
             </button>
             <button
               onClick={() => { setDeltaTemp(0); setDeltaPrecip(0); setDeltaFire(-50); setDeltaEmissions(-30); }}
-              className="w-full text-left px-3 py-2 rounded-lg bg-slate-900 border border-emerald-500/30 text-emerald-300 text-xs font-mono hover:bg-emerald-950/40 transition-colors"
+              className="w-full text-left px-3 py-2 rounded-lg bg-[#9BCDC2]/30 border border-[#5CB7A8] text-[#1D6C5D] text-xs font-mono font-bold hover:bg-[#9BCDC2]/60 transition-colors shadow-xs"
             >
               ✅ Clean Air Act 2025 (-50% fires, -30% emissions)
             </button>
@@ -134,54 +134,55 @@ export default function ScenarioSandboxTab({ selectedDate }) {
         <div className="lg:col-span-2 space-y-6">
           {/* Simulated Impact KPI Cards */}
           <div className="grid grid-cols-3 gap-4">
-            <div className="glass-panel rounded-xl p-4 border border-cyan-500/20">
-              <div className="text-xs font-mono text-slate-400 mb-1">MEAN PM2.5 SHIFT</div>
-              <div className="font-orbitron font-extrabold text-2xl" style={{ color: pm25Delta > 0 ? '#EF4444' : '#10B981' }}>
+            <div className="glass-panel rounded-xl p-4 border border-[#DDE7E4] bg-white shadow-sm">
+              <div className="text-xs font-mono text-[#527E75] mb-1 font-bold">MEAN PM2.5 SHIFT</div>
+              <div className="font-orbitron font-extrabold text-2xl" style={{ color: pm25Delta > 0 ? '#E05A47' : '#278E7B' }}>
                 {pm25Delta > 0 ? `+${pm25Delta.toFixed(1)}` : pm25Delta.toFixed(1)} <span className="text-xs font-normal">µg/m³</span>
               </div>
-              <div className="text-[11px] font-mono text-slate-500 mt-1">All-India Averaged Response</div>
+              <div className="text-[11px] font-mono text-[#527E75] mt-1">All-India Averaged Response</div>
             </div>
 
-            <div className="glass-panel rounded-xl p-4 border border-cyan-500/20">
-              <div className="text-xs font-mono text-slate-400 mb-1">NATIONAL AQI DELTA</div>
-              <div className="font-orbitron font-extrabold text-2xl" style={{ color: aqiDelta > 0 ? '#EF4444' : '#10B981' }}>
+            <div className="glass-panel rounded-xl p-4 border border-[#DDE7E4] bg-white shadow-sm">
+              <div className="text-xs font-mono text-[#527E75] mb-1 font-bold">NATIONAL AQI DELTA</div>
+              <div className="font-orbitron font-extrabold text-2xl" style={{ color: aqiDelta > 0 ? '#E05A47' : '#278E7B' }}>
                 {aqiDelta > 0 ? `+${aqiDelta.toFixed(0)}` : aqiDelta.toFixed(0)} <span className="text-xs font-normal">pts</span>
               </div>
-              <div className="text-[11px] font-mono text-slate-500 mt-1">CPCB Sub-Index Impact</div>
+              <div className="text-[11px] font-mono text-[#527E75] mt-1">CPCB Sub-Index Impact</div>
             </div>
 
-            <div className="glass-panel rounded-xl p-4 border border-cyan-500/20">
-              <div className="text-xs font-mono text-slate-400 mb-1">SEVERE CELLS AVOIDED</div>
-              <div className="font-orbitron font-extrabold text-2xl text-cyan-300">
+            <div className="glass-panel rounded-xl p-4 border border-[#DDE7E4] bg-white shadow-sm">
+              <div className="text-xs font-mono text-[#527E75] mb-1 font-bold">SEVERE CELLS AVOIDED</div>
+              <div className="font-orbitron font-extrabold text-2xl text-[#278E7B]">
                 {severeCellsAvoided > 0 ? `+${severeCellsAvoided}` : severeCellsAvoided}
               </div>
-              <div className="text-[11px] font-mono text-slate-500 mt-1">0.25° Sub-grid Cells</div>
+              <div className="text-[11px] font-mono text-[#527E75] mt-1">0.25° Sub-grid Cells</div>
             </div>
           </div>
 
           {/* Baseline vs Scenario Distribution Bar Chart */}
-          <div className="glass-panel rounded-xl p-5 border border-cyan-500/20">
-            <h4 className="font-orbitron font-bold text-sm text-cyan-300 mb-3">
+          <div className="glass-panel rounded-xl p-5 border border-[#DDE7E4] bg-white shadow-sm">
+            <h4 className="font-orbitron font-bold text-sm text-[#133B34] mb-3">
               Grid Cell AQI Category Distribution: Baseline vs Counterfactual Scenario
             </h4>
             <div className="h-[280px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={categoryData} margin={{ top: 10, right: 30, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 240, 255, 0.08)" />
-                  <XAxis dataKey="category" stroke="#64748B" tick={{ fill: '#94A3B8', fontSize: 11, fontFamily: 'JetBrains Mono' }} />
-                  <YAxis stroke="#64748B" tick={{ fill: '#94A3B8', fontSize: 11, fontFamily: 'JetBrains Mono' }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#DDE7E4" />
+                  <XAxis dataKey="category" stroke="#9BCDC2" tick={{ fill: '#527E75', fontSize: 11, fontFamily: 'Comfortaa' }} />
+                  <YAxis stroke="#9BCDC2" tick={{ fill: '#527E75', fontSize: 11, fontFamily: 'Comfortaa' }} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: 'rgba(7, 11, 20, 0.95)',
-                      borderColor: '#00F0FF',
+                      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                      borderColor: '#278E7B',
                       borderRadius: '8px',
-                      fontFamily: 'JetBrains Mono',
+                      fontFamily: 'Comfortaa',
                       fontSize: '12px',
+                      color: '#133B34',
                     }}
                   />
                   <Legend />
-                  <Bar name="Baseline State" dataKey="baseline" fill="rgba(99, 102, 241, 0.6)" radius={[4, 4, 0, 0]} />
-                  <Bar name="Perturbed Counterfactual" dataKey="perturbed" fill="#00F0FF" radius={[4, 4, 0, 0]} />
+                  <Bar name="Baseline State" dataKey="baseline" fill="#9BCDC2" radius={[4, 4, 0, 0]} />
+                  <Bar name="Perturbed Counterfactual" dataKey="perturbed" fill="#278E7B" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

@@ -41,8 +41,8 @@ export default function Trajectory3DViewer({
 
     // 1. Scene & Renderer
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x060913);
-    scene.fog = new THREE.FogExp2(0x060913, 0.012);
+    scene.background = new THREE.Color(0xF6F4EE);
+    scene.fog = new THREE.FogExp2(0xF6F4EE, 0.008);
     sceneRef.current = scene;
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 500);
@@ -60,31 +60,31 @@ export default function Trajectory3DViewer({
     }
     container.appendChild(renderer.domElement);
 
-    // 2. Lighting (Atmospheric Sci-Fi Glow)
-    const ambientLight = new THREE.AmbientLight(0x2a3b5c, 1.2);
+    // 2. Lighting (Warm Sun & Coastal Sky Glow)
+    const ambientLight = new THREE.AmbientLight(0xEAE4D8, 1.8);
     scene.add(ambientLight);
 
-    const cyanPointLight = new THREE.PointLight(0x00f0ff, 2.5, 100);
-    cyanPointLight.position.set(-20, 30, 20);
-    scene.add(cyanPointLight);
+    const sunPointLight = new THREE.PointLight(0xF1D3B7, 2.5, 120);
+    sunPointLight.position.set(-20, 35, 20);
+    scene.add(sunPointLight);
 
-    const purplePointLight = new THREE.PointLight(0xa855f7, 3.0, 100);
-    purplePointLight.position.set(20, 35, -10);
-    scene.add(purplePointLight);
+    const tealPointLight = new THREE.PointLight(0x5CB7A8, 2.0, 100);
+    tealPointLight.position.set(20, 35, -10);
+    scene.add(tealPointLight);
 
-    // 3. Cyber Grid Floor
-    const gridHelper = new THREE.GridHelper(60, 30, 0x00f0ff, 0x1e293b);
+    // 3. Clean Coastal Grid Floor
+    const gridHelper = new THREE.GridHelper(60, 30, 0x278E7B, 0xDDE7E4);
     gridHelper.position.y = 0;
     scene.add(gridHelper);
 
     // Floor Base Disc
     const floorGeo = new THREE.CircleGeometry(32, 64);
     const floorMat = new THREE.MeshStandardMaterial({
-      color: 0x070b14,
-      roughness: 0.8,
-      metalness: 0.5,
+      color: 0xEAE4D8,
+      roughness: 0.9,
+      metalness: 0.1,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.9,
     });
     const floorMesh = new THREE.Mesh(floorGeo, floorMat);
     floorMesh.rotation.x = -Math.PI / 2;
@@ -120,7 +120,7 @@ export default function Trajectory3DViewer({
           pos: pt,
           data: d,
           type: 'Historical Observation',
-          color: '#00F0FF',
+          color: '#278E7B',
           val: d.groundTruth,
         });
       }
@@ -137,7 +137,7 @@ export default function Trajectory3DViewer({
               pos: ptXgb,
               data: d,
               type: 'XGBoost Champion',
-              color: '#C084FC',
+              color: '#5CB7A8',
               val: d.xgboost,
             });
           }
@@ -153,7 +153,7 @@ export default function Trajectory3DViewer({
               pos: ptLstm,
               data: d,
               type: 'PyTorch LSTM',
-              color: '#F59E0B',
+              color: '#DEAC83',
               val: d.lstm,
             });
           }
@@ -171,11 +171,11 @@ export default function Trajectory3DViewer({
       const histCurve = new THREE.CatmullRomCurve3(histPoints);
       const histTubeGeo = new THREE.TubeGeometry(histCurve, 64, 0.45, 12, false);
       const histTubeMat = new THREE.MeshStandardMaterial({
-        color: 0x00f0ff,
-        emissive: 0x00a8b5,
-        emissiveIntensity: 0.6,
-        roughness: 0.2,
-        metalness: 0.8,
+        color: 0x278e7b,
+        emissive: 0x1d6c5d,
+        emissiveIntensity: 0.4,
+        roughness: 0.3,
+        metalness: 0.6,
       });
       const histTube = new THREE.Mesh(histTubeGeo, histTubeMat);
       scene.add(histTube);
@@ -193,9 +193,9 @@ export default function Trajectory3DViewer({
       }
       shape.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
       const curtainMat = new THREE.MeshBasicMaterial({
-        color: 0x00f0ff,
+        color: 0x278e7b,
         transparent: true,
-        opacity: 0.15,
+        opacity: 0.12,
         side: THREE.DoubleSide,
       });
       scene.add(new THREE.Mesh(shape, curtainMat));
@@ -205,11 +205,11 @@ export default function Trajectory3DViewer({
       const xgbCurve = new THREE.CatmullRomCurve3(xgbPoints);
       const xgbTubeGeo = new THREE.TubeGeometry(xgbCurve, 64, 0.55, 12, false);
       const xgbTubeMat = new THREE.MeshStandardMaterial({
-        color: 0xc084fc,
-        emissive: 0x8b5cf6,
-        emissiveIntensity: 0.8,
-        roughness: 0.2,
-        metalness: 0.9,
+        color: 0x5cb7a8,
+        emissive: 0x3d8d80,
+        emissiveIntensity: 0.5,
+        roughness: 0.3,
+        metalness: 0.7,
       });
       const xgbTube = new THREE.Mesh(xgbTubeGeo, xgbTubeMat);
       scene.add(xgbTube);
@@ -219,11 +219,11 @@ export default function Trajectory3DViewer({
       const lstmCurve = new THREE.CatmullRomCurve3(lstmPoints);
       const lstmTubeGeo = new THREE.TubeGeometry(lstmCurve, 64, 0.35, 12, false);
       const lstmTubeMat = new THREE.MeshStandardMaterial({
-        color: 0xf59e0b,
-        emissive: 0xd97706,
-        emissiveIntensity: 0.6,
+        color: 0xdeac83,
+        emissive: 0xb57847,
+        emissiveIntensity: 0.4,
         roughness: 0.3,
-        metalness: 0.7,
+        metalness: 0.5,
       });
       const lstmTube = new THREE.Mesh(lstmTubeGeo, lstmTubeMat);
       scene.add(lstmTube);
@@ -245,9 +245,9 @@ export default function Trajectory3DViewer({
       }
       ribbonGeo.setAttribute('position', new THREE.Float32BufferAttribute(ribbonVertices, 3));
       const ribbonMat = new THREE.MeshBasicMaterial({
-        color: 0xa855f7,
+        color: 0x9bcdc2,
         transparent: true,
-        opacity: 0.22,
+        opacity: 0.28,
         side: THREE.DoubleSide,
       });
       scene.add(new THREE.Mesh(ribbonGeo, ribbonMat));
@@ -257,9 +257,9 @@ export default function Trajectory3DViewer({
     const cutoffX = xStart + 14 * xStep;
     const cutoffGeo = new THREE.PlaneGeometry(12, 26);
     const cutoffMat = new THREE.MeshBasicMaterial({
-      color: 0xa855f7,
+      color: 0x278e7b,
       transparent: true,
-      opacity: 0.12,
+      opacity: 0.15,
       side: THREE.DoubleSide,
     });
     const cutoffMesh = new THREE.Mesh(cutoffGeo, cutoffMat);
@@ -274,7 +274,7 @@ export default function Trajectory3DViewer({
         const planeMat = new THREE.MeshBasicMaterial({
           color: colorHex,
           transparent: true,
-          opacity: 0.08,
+          opacity: 0.12,
           wireframe: true,
           side: THREE.DoubleSide,
         });
@@ -284,9 +284,9 @@ export default function Trajectory3DViewer({
         return plane;
       };
 
-      scene.add(createHazardPlane(60, 0x10b981));  // Satisfactory
-      scene.add(createHazardPlane(120, 0xf59e0b)); // Moderate
-      scene.add(createHazardPlane(250, 0xef4444)); // Severe
+      scene.add(createHazardPlane(60, 0x278e7b));  // Satisfactory
+      scene.add(createHazardPlane(120, 0xdeac83)); // Moderate
+      scene.add(createHazardPlane(250, 0xe05a47)); // Severe
     }
 
     // 9. Interactive 3D Sphere Data Nodes
@@ -420,38 +420,38 @@ export default function Trajectory3DViewer({
   };
 
   return (
-    <div className="relative w-full h-[460px] rounded-xl overflow-hidden border border-purple-500/30 bg-[#060913] shadow-[0_0_40px_rgba(0,0,0,0.9)]">
+    <div className="relative w-full h-[460px] rounded-xl overflow-hidden border border-[#DDE7E4] bg-[#F6F4EE] shadow-sm">
       {/* 3D WebGL Canvas Container */}
       <div ref={mountRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
 
       {/* Top HUD Telemetry Readout */}
-      <div className="absolute top-4 left-4 p-3.5 rounded-xl bg-[#070B14]/90 border border-cyan-500/40 text-xs font-mono text-slate-200 backdrop-blur-md shadow-[0_0_20px_rgba(0,240,255,0.2)] max-w-sm">
-        <div className="flex items-center gap-2 font-orbitron font-bold text-cyan-300 pb-1.5 border-b border-slate-700/80">
-          <Sparkles className="w-4 h-4 text-cyan-400" />
+      <div className="absolute top-4 left-4 p-3.5 rounded-xl bg-white/95 border border-[#DDE7E4] text-xs font-mono text-[#133B34] backdrop-blur-md shadow-lg max-w-sm">
+        <div className="flex items-center gap-2 font-orbitron font-bold text-[#278E7B] pb-1.5 border-b border-[#DDE7E4]">
+          <Sparkles className="w-4 h-4 text-[#278E7B]" />
           <span>3D SPACE-TIME DISPERSION</span>
         </div>
         <div className="mt-2 space-y-1 text-[11px]">
-          <div className="flex justify-between text-slate-400">
+          <div className="flex justify-between text-[#527E75]">
             <span>DOMAIN:</span>
-            <span className="text-slate-200 font-bold">{selectedCity.name}</span>
+            <span className="text-[#133B34] font-bold">{selectedCity.name}</span>
           </div>
-          <div className="flex justify-between text-slate-400">
+          <div className="flex justify-between text-[#527E75]">
             <span>VARIABLE:</span>
-            <span className="text-cyan-300 font-bold">{targetVar} ({unit})</span>
+            <span className="text-[#278E7B] font-bold">{targetVar} ({unit})</span>
           </div>
-          <div className="flex justify-between text-slate-400">
+          <div className="flex justify-between text-[#527E75]">
             <span>HORIZON:</span>
-            <span className="text-purple-300 font-bold">+{horizon}-Day Forward Lead</span>
+            <span className="text-[#5CB7A8] font-bold">+{horizon}-Day Forward Lead</span>
           </div>
         </div>
       </div>
 
       {/* Top Right 3D Interactive Controls */}
-      <div className="absolute top-4 right-4 flex items-center gap-2 bg-[#070B14]/90 p-1.5 rounded-xl border border-slate-700/80 font-mono text-xs backdrop-blur-md shadow-lg">
+      <div className="absolute top-4 right-4 flex items-center gap-2 bg-white/95 p-1.5 rounded-xl border border-[#DDE7E4] font-mono text-xs backdrop-blur-md shadow-lg">
         <button
           onClick={() => setIsAutoRotate(!isAutoRotate)}
           className={`p-2 rounded-lg transition-colors ${
-            isAutoRotate ? 'bg-cyan-500/30 text-cyan-300 border border-cyan-400/50' : 'text-slate-400 hover:text-slate-200'
+            isAutoRotate ? 'bg-[#278E7B] text-white shadow-xs' : 'text-[#527E75] hover:text-[#133B34]'
           }`}
           title={isAutoRotate ? 'Pause Rotation' : 'Auto Rotate'}
         >
@@ -461,7 +461,7 @@ export default function Trajectory3DViewer({
         <button
           onClick={() => setShowHazardPlanes(!showHazardPlanes)}
           className={`p-2 rounded-lg transition-colors ${
-            showHazardPlanes ? 'bg-rose-500/30 text-rose-300 border border-rose-400/50' : 'text-slate-400 hover:text-slate-200'
+            showHazardPlanes ? 'bg-[#E05A47] text-white shadow-xs' : 'text-[#527E75] hover:text-[#133B34]'
           }`}
           title="Toggle CPCB Threshold Planes"
         >
@@ -471,7 +471,7 @@ export default function Trajectory3DViewer({
         <button
           onClick={() => setShowConfidenceTube(!showConfidenceTube)}
           className={`p-2 rounded-lg transition-colors ${
-            showConfidenceTube ? 'bg-purple-500/30 text-purple-300 border border-purple-400/50' : 'text-slate-400 hover:text-slate-200'
+            showConfidenceTube ? 'bg-[#5CB7A8] text-white shadow-xs' : 'text-[#527E75] hover:text-[#133B34]'
           }`}
           title="Toggle 90% Confidence Tube"
         >
@@ -480,7 +480,7 @@ export default function Trajectory3DViewer({
 
         <button
           onClick={resetView}
-          className="p-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
+          className="p-2 rounded-lg text-[#527E75] hover:text-[#133B34] hover:bg-[#9BCDC2]/20 transition-colors"
           title="Reset Camera Angle"
         >
           <RotateCcw className="w-3.5 h-3.5" />
@@ -488,27 +488,27 @@ export default function Trajectory3DViewer({
       </div>
 
       {/* Bottom 3D Tracks Legend */}
-      <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-3 p-2.5 rounded-xl bg-[#070B14]/90 border border-slate-800 text-xs font-mono backdrop-blur-md">
+      <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-3 p-2.5 rounded-xl bg-white/95 border border-[#DDE7E4] text-xs font-mono backdrop-blur-md shadow-md">
         <div className="flex items-center gap-4 flex-wrap">
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_#00F0FF]"></span>
-            <span className="text-cyan-300 font-bold">Historical Ground Truth (Tube)</span>
+            <span className="w-3 h-3 rounded-full bg-[#278E7B] shadow-xs"></span>
+            <span className="text-[#278E7B] font-bold">Historical Ground Truth</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-purple-400 shadow-[0_0_8px_#A855F7]"></span>
-            <span className="text-purple-300 font-bold">XGBoost Champion (Prediction)</span>
+            <span className="w-3 h-3 rounded-full bg-[#5CB7A8] shadow-xs"></span>
+            <span className="text-[#133B34] font-bold">XGBoost Champion (Prediction)</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-amber-400 shadow-[0_0_8px_#F59E0B]"></span>
-            <span className="text-amber-300 font-bold">PyTorch LSTM Track</span>
+            <span className="w-3 h-3 rounded-full bg-[#DEAC83] shadow-xs"></span>
+            <span className="text-[#8C4F18] font-bold">PyTorch LSTM Track</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-4 h-2 rounded bg-purple-500/40 border border-purple-400"></span>
-            <span className="text-slate-400">90% Gaussian Tube</span>
+            <span className="w-4 h-2 rounded bg-[#9BCDC2]/50 border border-[#5CB7A8]"></span>
+            <span className="text-[#527E75] font-bold">90% Confidence Tube</span>
           </div>
         </div>
 
-        <div className="text-[11px] text-slate-500 hidden sm:block">
+        <div className="text-[11px] text-[#527E75] hidden sm:block font-bold">
           LEFT CLICK + DRAG TO ORBIT · SCROLL TO ZOOM
         </div>
       </div>
@@ -516,17 +516,17 @@ export default function Trajectory3DViewer({
       {/* Interactive 3D Node Hover Tooltip */}
       {hoveredPoint && (
         <div
-          className="absolute z-50 pointer-events-none p-3 rounded-xl bg-[#070B14]/95 border border-cyan-400 text-xs font-mono shadow-[0_0_25px_rgba(0,240,255,0.4)] backdrop-blur-md transform -translate-x-1/2 -translate-y-full mb-3"
+          className="absolute z-50 pointer-events-none p-3 rounded-xl bg-white/95 border border-[#5CB7A8] text-xs font-mono shadow-xl backdrop-blur-md transform -translate-x-1/2 -translate-y-full mb-3 text-[#133B34]"
           style={{ left: hoveredPoint.screenX, top: hoveredPoint.screenY }}
         >
-          <div className="font-bold text-cyan-300 pb-1 border-b border-slate-700">
+          <div className="font-bold text-[#278E7B] pb-1 border-b border-[#DDE7E4]">
             {hoveredPoint.data.date} · {hoveredPoint.type}
           </div>
-          <div className="mt-1.5 font-bold text-slate-200">
+          <div className="mt-1.5 font-bold text-[#133B34]">
             Value: <span style={{ color: hoveredPoint.color }}>{hoveredPoint.val} {unit}</span>
           </div>
           {hoveredPoint.data.upperBand && (
-            <div className="text-[11px] text-slate-400 mt-1">
+            <div className="text-[11px] text-[#527E75] mt-1">
               90% Interval: [{hoveredPoint.data.lowerBand} – {hoveredPoint.data.upperBand}]
             </div>
           )}
