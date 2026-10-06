@@ -1,35 +1,35 @@
 feature,importance,category
-MERRA2_PM25_RH35,0.3927,Reanalysis Aerosol Diagnostic
-MERRA2_AOD_TOT,0.2524,Reanalysis Aerosol Diagnostic
-doy_cos,0.117,Spatiotemporal Embedding
-MERRA2_AOD_BC,0.0585,Reanalysis Aerosol Diagnostic
-MODIS_AOD_550,0.0503,Satellite Remote Sensing (MODIS)
-ERA5_VENTILATION_INDEX,0.0457,Meteorology & Boundary Layer
-longitude,0.0166,Spatiotemporal Embedding
+MERRA2_PM25_RH35,0.3852,Reanalysis Aerosol Diagnostic
+MERRA2_AOD_TOT,0.274,Reanalysis Aerosol Diagnostic
+doy_cos,0.1169,Spatiotemporal Embedding
+MODIS_AOD_550,0.0582,Satellite Remote Sensing (MODIS)
+ERA5_VENTILATION_INDEX,0.0458,Meteorology & Boundary Layer
+MERRA2_AOD_BC,0.0366,Reanalysis Aerosol Diagnostic
+longitude,0.0187,Spatiotemporal Embedding
 TROPOMI_HCHO,0.0151,Satellite Atmospheric Column
-latitude,0.0127,Spatiotemporal Embedding
-ERA5_BLH,0.0069,Meteorology & Boundary Layer
+latitude,0.011,Spatiotemporal Embedding
+ERA5_BLH,0.0068,Meteorology & Boundary Layer
 MERRA2_AOD_DUST,0.0063,Reanalysis Aerosol Diagnostic
 TROPOMI_CO,0.0057,Satellite Atmospheric Column
-ERA5_SP,0.0055,Meteorology & Boundary Layer
-doy_sin,0.0045,Spatiotemporal Embedding
+ERA5_SP,0.005,Meteorology & Boundary Layer
+doy_sin,0.0047,Spatiotemporal Embedding
 TROPOMI_NO2,0.0038,Satellite Atmospheric Column
-TROPOMI_O3,0.0018,Satellite Atmospheric Column
 MODIS_NDVI,0.0018,Satellite Remote Sensing (MODIS)
-ERA5_RH,0.0011,Meteorology & Boundary Layer
+TROPOMI_O3,0.0017,Satellite Atmospheric Column
+ERA5_RH,0.001,Meteorology & Boundary Layer
 ERA5_T2M,0.0005,Meteorology & Boundary Layer
 day_of_week,0.0004,Spatiotemporal Embedding
 MODIS_LST_Night,0.0003,Satellite Remote Sensing (MODIS)
-MODIS_LST_Day,0.0003,Satellite Remote Sensing (MODIS)
-ERA5_TP,0.0,Meteorology & Boundary Layer
+MODIS_LST_Day,0.0002,Satellite Remote Sensing (MODIS)
+fire_frp_200km_lag2,0.0001,Active Fire & FRP Proximity
+fire_count_200km_lag2,0.0001,Active Fire & FRP Proximity
 ERA5_WIND_SPEED,0.0,Meteorology & Boundary Layer
 TROPOMI_SO2,0.0,Satellite Atmospheric Column
-fire_count_25km_lag0,0.0,Active Fire & FRP Proximity
-fire_frp_100km_lag1,0.0,Active Fire & FRP Proximity
+is_weekend,0.0,Spatiotemporal Embedding
 fire_count_100km_lag1,0.0,Active Fire & FRP Proximity
+fire_frp_100km_lag1,0.0,Active Fire & FRP Proximity
 fire_frp_50km_lag0,0.0,Active Fire & FRP Proximity
 fire_count_50km_lag0,0.0,Active Fire & FRP Proximity
 fire_frp_25km_lag0,0.0,Active Fire & FRP Proximity
-fire_frp_200km_lag2,0.0,Active Fire & FRP Proximity
-fire_count_200km_lag2,0.0,Active Fire & FRP Proximity
-is_weekend,0.0,Spatiotemporal Embedding
+fire_count_25km_lag0,0.0,Active Fire & FRP Proximity
+ERA5_TP,0.0,Meteorology & Boundary Layer

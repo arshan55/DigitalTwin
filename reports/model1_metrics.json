@@ -1,7 +1,7 @@
 {
-  "trained_at": "2026-10-06 01:11:38",
+  "trained_at": "2026-10-06 14:05:10",
   "best_model": "random_forest",
-  "best_r2": 0.9995,
+  "best_r2": 0.9994,
   "feature_columns": [
     "TROPOMI_NO2",
     "TROPOMI_CO",
@@ -42,112 +42,112 @@
   "models": {
     "linear_baseline": {
       "model_name": "linear_baseline",
-      "model_path": "data\\processed\\models\\model1_linear_baseline.joblib",
+      "model_path": "data/processed/models/model1_linear_baseline.joblib",
       "random_cv": {
-        "r2": 0.9257,
-        "rmse": 18.99,
+        "r2": 0.9258,
+        "rmse": 18.97,
         "mae": 12.98,
         "bias": 0.01
       },
       "spatial_cv": {
-        "r2": 0.8825,
-        "rmse": 23.88,
-        "mae": 15.95,
-        "bias": 1.4
+        "r2": 0.8818,
+        "rmse": 23.95,
+        "mae": 16.01,
+        "bias": 1.54
       },
       "temporal_cv": {
-        "r2": -595.8507,
-        "rmse": 1702.23,
-        "mae": 126.5,
-        "bias": 106.26
+        "r2": 0.1771,
+        "rmse": 63.21,
+        "mae": 20.93,
+        "bias": 3.19
       }
     },
     "random_forest": {
       "model_name": "random_forest",
-      "model_path": "data\\processed\\models\\model1_random_forest.joblib",
+      "model_path": "data/processed/models/model1_random_forest.joblib",
       "random_cv": {
-        "r2": 0.9995,
-        "rmse": 1.57,
-        "mae": 0.68,
-        "bias": 0.06
+        "r2": 0.9994,
+        "rmse": 1.67,
+        "mae": 0.75,
+        "bias": 0.04
       },
       "spatial_cv": {
-        "r2": 0.9382,
-        "rmse": 17.32,
-        "mae": 6.67,
-        "bias": 1.56
+        "r2": 0.9398,
+        "rmse": 17.1,
+        "mae": 6.59,
+        "bias": 1.69
       },
       "temporal_cv": {
-        "r2": 0.7552,
-        "rmse": 34.47,
-        "mae": 26.21,
-        "bias": -8.88
+        "r2": 0.7406,
+        "rmse": 35.49,
+        "mae": 26.72,
+        "bias": -9.46
       }
     },
     "xgboost": {
       "model_name": "xgboost",
-      "model_path": "data\\processed\\models\\model1_xgboost.joblib",
+      "model_path": "data/processed/models/model1_xgboost.joblib",
       "random_cv": {
         "r2": 0.9993,
         "rmse": 1.85,
         "mae": 1.28,
-        "bias": 0.01
+        "bias": 0.0
       },
       "spatial_cv": {
-        "r2": 0.9439,
-        "rmse": 16.5,
-        "mae": 6.74,
-        "bias": 1.62
+        "r2": 0.944,
+        "rmse": 16.49,
+        "mae": 6.97,
+        "bias": 1.28
       },
       "temporal_cv": {
-        "r2": 0.727,
-        "rmse": 36.4,
-        "mae": 27.44,
-        "bias": -13.23
+        "r2": 0.7925,
+        "rmse": 31.74,
+        "mae": 24.6,
+        "bias": -9.85
       }
     },
     "lightgbm": {
       "model_name": "lightgbm",
-      "model_path": "data\\processed\\models\\model1_lightgbm.joblib",
+      "model_path": "data/processed/models/model1_lightgbm.joblib",
       "random_cv": {
         "r2": 0.9994,
         "rmse": 1.7,
         "mae": 1.19,
-        "bias": -0.0
+        "bias": 0.0
       },
       "spatial_cv": {
-        "r2": 0.9466,
-        "rmse": 16.09,
+        "r2": 0.9461,
+        "rmse": 16.17,
         "mae": 6.56,
-        "bias": 1.68
+        "bias": 1.76
       },
       "temporal_cv": {
-        "r2": 0.7669,
-        "rmse": 33.64,
-        "mae": 25.95,
-        "bias": -10.22
+        "r2": 0.7697,
+        "rmse": 33.44,
+        "mae": 25.91,
+        "bias": -10.09
       }
     },
     "stacking_ensemble": {
       "model_name": "stacking_ensemble",
-      "model_path": "data\\processed\\models\\model1_stacking_ensemble.joblib",
+      "model_path": "data/processed/models/model1_stacking_ensemble.joblib",
       "random_cv": {
-        "r2": 0.9991,
-        "rmse": 2.1,
-        "mae": 1.4,
-        "bias": -0.01
+        "r2": 0.999,
+        "rmse": 2.18,
+        "mae": 1.48,
+        "bias": 0.02
       },
       "spatial_cv": {
-        "r2": 0.9424,
-        "rmse": 16.73,
-        "mae": 6.94,
-        "bias": 1.65
+        "r2": 0.9402,
+        "rmse": 17.04,
+        "mae": 7.09,
+        "bias": 1.54
       },
       "temporal_cv": {
-        "r2": 0.7465,
-        "rmse": 35.08,
-        "mae": 26.6,
-        "bias": -10.62
+        "r2": 0.7404,
+        "rmse": 35.5,
+        "mae": 26.73,
+        "bias": -11.23
       }
     }
   }
