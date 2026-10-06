@@ -5,7 +5,7 @@
   "baseline_september_pm25": 70.5,
   "excess_pm25": 129.8,
   "pct_increase_over_baseline": 184.2,
-  "fire_frp_pm25_correlation": 0.231,
+  "fire_frp_pm25_correlation": 0.23,
   "estimated_biomass_fraction": 0.17,
-  "summary_statement": "During the post-monsoon stubble burning episode (2023-10-15 to 2023-11-20), IGP mean PM2.5 reached 200.2 \u00b5g/m\u00b3, representing a 184.2% surge over the pre-fire September baseline (70.5 \u00b5g/m\u00b3). Upwind fire FRP shows strong positive correlation (r=0.231) with downwind surface PM2.5."
+  "summary_statement": "During the post-monsoon stubble burning episode (2023-10-15 to 2023-11-20), IGP mean PM2.5 reached 200.2 \u00b5g/m\u00b3, representing a 184.2% surge over the pre-fire September baseline (70.5 \u00b5g/m\u00b3). Upwind fire FRP shows strong positive correlation (r=0.230) with downwind surface PM2.5."
 }
