@@ -11,7 +11,7 @@ import { checkHealth, getAQI } from './services/api';
 
 export default function App() {
   const [selectedCity, setSelectedCity] = useState(INDIA_CITIES[0]); // Delhi-NCR
-  const [selectedDate, setSelectedDate] = useState('2023-11-05');
+  const [selectedDate, setSelectedDate] = useState('2023-06-10'); // Dust Storm (Jun 10) default preset
   const [activeTab, setActiveTab] = useState('map'); // 'map' | 'forecast' | 'risk' | 'scenario' | 'explain'
   const [systemHealth, setSystemHealth] = useState(null);
   const [aqiData, setAqiData] = useState(null);
@@ -31,7 +31,7 @@ export default function App() {
   }, [selectedCity, selectedDate]);
 
   return (
-    <div className="min-h-screen bg-[#070B14] text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-slate-900">
+    <div className="min-h-screen bg-[#F6F4EE] text-[#133B34] flex flex-col selection:bg-[#5CB7A8] selection:text-white">
       {/* Top HUD Header */}
       <Header
         selectedCity={selectedCity}
@@ -88,19 +88,19 @@ export default function App() {
         </div>
       </main>
 
-      {/* Futuristic HUD Footer */}
-      <footer className="border-t border-slate-800/80 bg-[#070B14]/90 py-3 text-center text-xs font-mono text-slate-500">
+      {/* Coastal Sand & Ocean HUD Footer */}
+      <footer className="border-t border-[#DDE7E4] bg-[#FFFFFF]/90 py-3 text-center text-xs font-mono text-[#527E75] shadow-inner">
         <div className="max-w-[1520px] mx-auto px-4 flex flex-wrap items-center justify-between gap-2 text-[11px]">
           <div className="flex items-center gap-2">
-            <span className="text-cyan-400 font-bold tracking-wider">INDIA CLIMATE & AQ DIGITAL TWIN</span>
-            <span className="text-slate-600">•</span>
+            <span className="text-[#278E7B] font-bold tracking-wider">INDIA CLIMATE & AQ DIGITAL TWIN</span>
+            <span className="text-[#9BCDC2]">•</span>
             <span>REAL-TIME</span>
-            <span className="text-slate-600">•</span>
+            <span className="text-[#9BCDC2]">•</span>
             <span>PREDICTIVE</span>
-            <span className="text-slate-600">•</span>
+            <span className="text-[#9BCDC2]">•</span>
             <span>SMARTER DECISIONS</span>
           </div>
-          <div>
+          <div className="text-[#2C5E55]">
             SATELLITE DATA: SENTINEL-5P • NASA MODIS • MERRA-2 • ERA5 • VIIRS • CPCB CAAQMS
           </div>
         </div>

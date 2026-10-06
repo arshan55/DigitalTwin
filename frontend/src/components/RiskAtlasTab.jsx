@@ -98,8 +98,8 @@ export default function RiskAtlasTab({ selectedDate }) {
   const layers = useMemo(() => {
     return [
       new TileLayer({
-        id: 'risk-esri-dark-basemap',
-        data: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+        id: 'risk-esri-light-basemap',
+        data: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
         minZoom: 0,
         maxZoom: 16,
         tileSize: 256,
@@ -117,8 +117,8 @@ export default function RiskAtlasTab({ selectedDate }) {
         data: INDIA_STATES_GEOJSON,
         stroked: true,
         filled: true,
-        getFillColor: [10, 18, 35, 90],
-        getLineColor: [99, 102, 241, 140],
+        getFillColor: [246, 244, 238, 25],
+        getLineColor: [92, 183, 168, 160],
         lineWidthMinPixels: 1.0,
         pickable: false,
       }),
@@ -127,7 +127,7 @@ export default function RiskAtlasTab({ selectedDate }) {
         data: INDIA_NATIONAL_GEOJSON,
         stroked: true,
         filled: false,
-        getLineColor: [239, 68, 68, 240],
+        getLineColor: [39, 142, 123, 255],
         lineWidthMinPixels: 2.5,
         pickable: false,
       }),
@@ -137,7 +137,7 @@ export default function RiskAtlasTab({ selectedDate }) {
         getPolygon: d => d.polygon,
         getElevation: d => d.elevation,
         getFillColor: d => [...d.color, 225],
-        getLineColor: d => [239, 68, 68, 60],
+        getLineColor: [39, 142, 123, 50],
         lineWidthMinPixels: 0.5,
         stroked: true,
         filled: true,
@@ -145,12 +145,12 @@ export default function RiskAtlasTab({ selectedDate }) {
         elevationScale: 1,
         pickable: true,
         autoHighlight: true,
-        highlightColor: [239, 68, 68, 150],
+        highlightColor: [92, 183, 168, 150],
         material: {
-          ambient: 0.45,
+          ambient: 0.5,
           diffuse: 0.6,
           shininess: 32,
-          specularColor: [80, 80, 80],
+          specularColor: [120, 120, 120],
         },
         onHover: info => setHoverInfo(info),
       }),
@@ -160,15 +160,15 @@ export default function RiskAtlasTab({ selectedDate }) {
   return (
     <div className="space-y-6">
       {/* Category Filter Selector Ribbon */}
-      <div className="glass-panel rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
+      <div className="glass-panel rounded-xl p-4 flex flex-wrap items-center justify-between gap-4 border border-[#DDE7E4] bg-white shadow-sm">
         <div>
-          <h3 className="font-orbitron font-bold text-base text-rose-300">Compound Multi-Hazard Climate Risk Atlas</h3>
-          <p className="text-xs font-mono text-slate-400">
+          <h3 className="font-orbitron font-bold text-base text-[#133B34]">Compound Multi-Hazard Climate Risk Atlas</h3>
+          <p className="text-xs font-mono text-[#527E75]">
             Coupled vulnerability index combining Wet-bulb Heat Stress (W ≥ 32°C), Drought Deficit (SPI/NDVI), and Severe AQ Exceedance (PM2.5 &gt; 400)
           </p>
         </div>
 
-        <div className="flex bg-slate-900 rounded-lg p-1 border border-slate-700 font-mono text-xs flex-wrap gap-1">
+        <div className="flex bg-[#F6F4EE] rounded-lg p-1 border border-[#DDE7E4] font-mono text-xs flex-wrap gap-1">
           {[
             { id: 'composite', label: 'Composite Multi-Hazard', icon: ShieldAlert },
             { id: 'heat', label: 'Thermal Heat Stress', icon: Flame },
@@ -182,7 +182,7 @@ export default function RiskAtlasTab({ selectedDate }) {
                 key={c.id}
                 onClick={() => setRiskCategory(c.id)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded font-bold transition-colors ${
-                  isSelected ? 'bg-rose-500/30 text-rose-300 border border-rose-400/50 shadow-[0_0_12px_rgba(239,68,68,0.2)]' : 'text-slate-400 hover:text-slate-200'
+                  isSelected ? 'bg-[#278E7B] text-white shadow-xs' : 'text-[#2C5E55] hover:text-[#133B34]'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -194,7 +194,7 @@ export default function RiskAtlasTab({ selectedDate }) {
       </div>
 
       {/* 3D Risk Geospatial Viewport */}
-      <div className="relative w-full h-[480px] rounded-xl overflow-hidden border border-rose-500/30 shadow-[0_0_35px_rgba(0,0,0,0.85)] bg-[#070B14]">
+      <div className="relative w-full h-[480px] rounded-xl overflow-hidden border border-[#DDE7E4] shadow-sm bg-[#EAE4D8]">
         <DeckGL
           initialViewState={initialViewState}
           controller={true}
@@ -205,25 +205,25 @@ export default function RiskAtlasTab({ selectedDate }) {
         {/* Hover Tooltip Overlay */}
         {hoverInfo?.object && (
           <div
-            className="absolute z-50 pointer-events-none p-3 rounded-lg bg-[#070B14]/95 border border-rose-400 text-xs font-mono shadow-[0_0_20px_rgba(239,68,68,0.4)] backdrop-blur-md"
+            className="absolute z-50 pointer-events-none p-3 rounded-lg bg-white/95 border border-[#5CB7A8] text-xs font-mono shadow-xl backdrop-blur-md text-[#133B34]"
             style={{ left: hoverInfo.x + 12, top: hoverInfo.y + 12 }}
           >
-            <div className="font-bold text-rose-400">{hoverInfo.object.lat}°N, {hoverInfo.object.lon}°E (India Grid)</div>
-            <div className="text-slate-200 mt-1 font-bold">
-              Score: <span className="text-rose-300">{hoverInfo.object.riskValue}</span>
+            <div className="font-bold text-[#278E7B]">{hoverInfo.object.lat}°N, {hoverInfo.object.lon}°E (India Grid)</div>
+            <div className="text-[#133B34] mt-1 font-bold">
+              Score: <span className="text-[#E05A47]">{hoverInfo.object.riskValue}</span>
             </div>
-            <div className="text-[11px] text-slate-400 mt-1">
+            <div className="text-[11px] text-[#527E75] mt-1">
               Heat: {hoverInfo.object.heat} | Drought: {hoverInfo.object.drought} | AQ: {hoverInfo.object.air}
             </div>
           </div>
         )}
 
-        <div className="absolute top-4 left-4 p-2.5 rounded-lg bg-[#070B14]/90 border border-rose-500/40 text-[11px] font-mono text-slate-300 backdrop-blur-md">
+        <div className="absolute top-4 left-4 p-2.5 rounded-lg bg-white/90 border border-[#DDE7E4] text-[11px] font-mono text-[#133B34] backdrop-blur-md shadow-sm">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-            <span className="text-rose-400 font-bold uppercase">{riskCategory} RISK LAYER</span>
+            <span className="w-2 h-2 rounded-full bg-[#278E7B] animate-pulse"></span>
+            <span className="text-[#278E7B] font-bold uppercase">{riskCategory} RISK LAYER</span>
           </div>
-          <div className="text-[10px] text-slate-500 mt-1">
+          <div className="text-[10px] text-[#527E75] mt-1">
             HAZARD RANGE: 0.0 (SAFE) – 1.0 (EXTREME) · 3D DENSITY MESH
           </div>
         </div>
@@ -231,24 +231,32 @@ export default function RiskAtlasTab({ selectedDate }) {
 
       {/* Regional Comparison Chart & Description Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 glass-panel rounded-xl p-5 border border-rose-500/20">
-          <h4 className="font-orbitron font-bold text-sm text-rose-300 mb-3">Regional Risk Vulnerability Index [0–1]</h4>
-          <div className="h-[300px] w-full">
+        <div className="lg:col-span-2 glass-panel rounded-xl p-5 border border-[#DDE7E4] bg-white shadow-sm">
+          <h4 className="font-orbitron font-bold text-sm text-[#133B34] mb-3">Regional Risk Vulnerability Index [0–1]</h4>
+          <div className="h-[340px] w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={regionalRiskData} layout="vertical" margin={{ top: 10, right: 30, left: 100, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 240, 255, 0.08)" />
-                <XAxis type="number" domain={[0, 1]} stroke="#64748B" tick={{ fill: '#94A3B8', fontSize: 11, fontFamily: 'JetBrains Mono' }} />
-                <YAxis dataKey="region" type="category" stroke="#64748B" tick={{ fill: '#CBD5E1', fontSize: 12, fontFamily: 'Rajdhani', fontWeight: 'bold' }} />
+              <BarChart data={regionalRiskData} layout="vertical" margin={{ top: 10, right: 30, left: 10, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#DDE7E4" />
+                <XAxis type="number" domain={[0, 1]} stroke="#9BCDC2" tick={{ fill: '#527E75', fontSize: 11, fontFamily: 'Comfortaa' }} />
+                <YAxis
+                  dataKey="region"
+                  type="category"
+                  stroke="#9BCDC2"
+                  width={180}
+                  interval={0}
+                  tick={{ fill: '#133B34', fontSize: 11, fontFamily: 'Comfortaa', fontWeight: 'bold' }}
+                />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: 'rgba(7, 11, 20, 0.95)',
-                    borderColor: '#EF4444',
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    borderColor: '#278E7B',
                     borderRadius: '8px',
-                    fontFamily: 'JetBrains Mono',
+                    fontFamily: 'Comfortaa',
                     fontSize: '12px',
+                    color: '#133B34',
                   }}
                 />
-                <Bar dataKey={riskCategory} fill="#EF4444" radius={[0, 6, 6, 0]} />
+                <Bar dataKey={riskCategory} fill="#278E7B" radius={[0, 6, 6, 0]} barSize={22} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -256,32 +264,32 @@ export default function RiskAtlasTab({ selectedDate }) {
 
         {/* Hazard Methodology Cards */}
         <div className="space-y-3">
-          <div className="glass-panel rounded-xl p-3.5 border border-rose-500/30 bg-rose-950/20">
-            <div className="flex items-center gap-2 text-rose-400 font-orbitron font-bold text-xs">
+          <div className="glass-panel rounded-xl p-3.5 border border-[#F1D3B7] bg-[#F1D3B7]/20 shadow-xs">
+            <div className="flex items-center gap-2 text-[#8C4F18] font-orbitron font-bold text-xs">
               <Flame className="w-3.5 h-3.5" />
               <span>Thermal Wet-Bulb Stress</span>
             </div>
-            <p className="text-[11px] font-mono text-slate-300 mt-1.5">
+            <p className="text-[11px] font-mono text-[#527E75] mt-1.5">
               Assesses physiological thermal strain at W ≥ 32°C combined with MODIS daytime Land Surface Temperature anomalies.
             </p>
           </div>
 
-          <div className="glass-panel rounded-xl p-3.5 border border-amber-500/30 bg-amber-950/20">
-            <div className="flex items-center gap-2 text-amber-400 font-orbitron font-bold text-xs">
+          <div className="glass-panel rounded-xl p-3.5 border border-[#DEAC83] bg-[#FDF2D9] shadow-xs">
+            <div className="flex items-center gap-2 text-[#916508] font-orbitron font-bold text-xs">
               <Droplet className="w-3.5 h-3.5" />
               <span>Drought / Vegetation Deficit</span>
             </div>
-            <p className="text-[11px] font-mono text-slate-300 mt-1.5">
+            <p className="text-[11px] font-mono text-[#527E75] mt-1.5">
               Evaluates 30-day cumulative precipitation deficits coupled with MODIS NDVI vegetation stress indicators.
             </p>
           </div>
 
-          <div className="glass-panel rounded-xl p-3.5 border border-purple-500/30 bg-purple-950/20">
-            <div className="flex items-center gap-2 text-purple-400 font-orbitron font-bold text-xs">
+          <div className="glass-panel rounded-xl p-3.5 border border-[#9BCDC2] bg-[#9BCDC2]/20 shadow-xs">
+            <div className="flex items-center gap-2 text-[#1D6C5D] font-orbitron font-bold text-xs">
               <Wind className="w-3.5 h-3.5" />
               <span>Severe AQ Exceedance</span>
             </div>
-            <p className="text-[11px] font-mono text-slate-300 mt-1.5">
+            <p className="text-[11px] font-mono text-[#527E75] mt-1.5">
               Computes exceedance probability of Indian AQI exceeding 400 (Severe status) for consecutive 48-hour periods.
             </p>
           </div>
