@@ -93,6 +93,7 @@ class ScenarioRequest(BaseModel):
 
 
 # --- Endpoints ---
+@app.get("/health", response_model=HealthResponse)
 @app.get("/api/v1/health", response_model=HealthResponse)
 def get_health():
     """System health check and loaded model diagnostics."""
