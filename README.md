@@ -1,28 +1,52 @@
 # 🌍 India Air Quality & Climate Digital Twin
 
-An end-to-end geospatial AI digital twin of the Indian subcontinent integrating satellite remote sensing, atmospheric chemistry reanalysis, and machine learning to monitor surface air quality, detect volatile organic compound (HCHO) hotspots, attribute biomass burning smoke transport, and simulate counterfactual climate and policy interventions.
+[![CI/CD - Deploy to GitHub Pages](https://github.com/its-SamiKhan/DigitalTwin-Capstone-/actions/workflows/deploy.yml/badge.svg)](https://github.com/its-SamiKhan/DigitalTwin-Capstone-/actions/workflows/deploy.yml)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-278E7B?style=flat&logo=github)](https://its-samikhan.github.io/DigitalTwin-Capstone-/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![React 18 + Vite](https://img.shields.io/badge/Frontend-React%2018%20%2B%20Vite-5CB7A8?logo=react)](https://vitejs.dev/)
+
+An end-to-end geospatial AI digital twin of the Indian subcontinent integrating satellite remote sensing, atmospheric chemistry reanalysis, machine learning, and GPU-accelerated 3D WebGL visualization. The platform monitors surface air quality, estimates multi-pollutant concentrations, tracks volatile organic compound (HCHO) anomalies, attributes biomass burning smoke transport, projects multi-hazard climate trajectories, and simulates counterfactual policy interventions.
 
 ---
 
-## 🌟 Key Features
+## 🌟 Key Capabilities
 
-### Model 1: Surface AQI, HCHO Monitoring & Biomass Fire Attribution
-- **Multi-Sensor Fusion:** Combines Sentinel-5P TROPOMI ($NO_2, CO, SO_2, O_3, HCHO$), NASA Earthdata MODIS (MAIAC AOD 550nm, LST Day/Night, NDVI), NASA MERRA-2 aerosol reanalysis (mass diagnostics, Black Carbon, Dust), ECMWF ERA5 meteorology (temperature, relative humidity, winds, boundary layer height, ventilation index), and NASA VIIRS FIRMS active fires.
-- **CPCB Ground Station Alignment:** Benchmarked against reference Continuous Ambient Air Quality Monitoring Stations (CAAQMS) across 15 cities and 11 Indian states.
-- **Machine Learning Ensemble:** Benchmarked across Ridge, Random Forest, XGBoost, LightGBM (Champion: Spatial Leave-Station-Out $R^2 = 0.9466$, Temporal $R^2 = 0.7669$), and Stacking Regressor.
-- **Official CPCB National AQI Engine:** Piecewise linear sub-index calculations for $PM_{2.5}, PM_{10}, NO_2, SO_2, CO, O_3$.
-- **HCHO Hotspot Detection:** Seasonal Z-score spatial anomaly detection ($Z \ge 2.0$) and DBSCAN clustering.
-- **Fire Attribution:** Empirical tracking of smoke transport from stubble burning (Punjab/Haryana) during post-monsoon months (+184.2% PM2.5 surge documented).
+### 1. 🏔️ 3D Topographic WebGL Digital Twin (Deck.gl & React 18)
+- **Ultra-Fine 3D Topographic Relief (`step = 0.05°`):** Real-time spatial mesh with ~40,000 continuous micro-quads across sovereign Indian territory, creating a silky smooth, continuous mountain landscape without blocky steps.
+- **Proportional Multi-Tier Altitude Engine:**
+  - *Pristine / Low Baselines ($AQI \le 60$):* Low ground valley levels ($300\text{m} - 13,200\text{m}$).
+  - *Moderate-Low ($AQI \in 61–100$):* Distinct proportional elevation step ($28,000\text{m} - 56,000\text{m}$).
+  - *Severe Hotspots ($AQI > 300$):* Majestic peaks rising up to $340,000\text{m}$.
+- **Continuous Ombré Mountain Palette:** Smooth gradient transitioning from **Emerald/Mint Valleys** (`#278E7B`) $\to$ **Golden Sand Dunes** (`#E48E36`) $\to$ **Terracotta Ridges** (`#DE5634`) $\to$ **Crimson Mountain Summits** (`#C62626`).
+- **Dynamic Pollutant Switcher:** Instant 3D re-rendering for $\text{PM}_{2.5}, \text{PM}_{10}, \text{NO}_2, \text{SO}_2, \text{CO}, \text{O}_3$ with official CPCB breakpoint scales.
+- **Active VIIRS Thermal Fires:** Real-time visual overlay of active agricultural stubble and forest fire points with Fire Radiative Power (FRP) scaling.
 
-### Model 2: AI-Powered Climate Digital Twin & Scenario Engine
-- **Coupled State Space Store:** Unified geospatial state space covering thermodynamics, land surface, and atmospheric chemistry across India.
+### 2. 📊 Dynamic Regional Airshed & Spatial Exposure Analytics
+- **Regional Airshed Analysis:** Real-time telemetry across India's 4 major airsheds:
+  - *Indo-Gangetic Plain (IGP)* (Delhi, Lucknow, Kanpur, Patna, Kolkata)
+  - *Western & Coastal Belt* (Mumbai, Pune, Ahmedabad, Surat, Jaipur)
+  - *Deccan & Southern Peninsula* (Bengaluru, Chennai, Hyderabad, Kochi)
+  - *Eastern & Brahmaputra Valley* (Guwahati, Bhubaneswar, Ranchi)
+- **Real-Time Spatial Diagnostics:**
+  - **NAAQS Exceedance Area:** Percentage of territory currently exceeding national standards.
+  - **National Station Tier Breakdown:** Dynamic multi-color segmented distribution (*Good/Satisfactory*, *Moderate*, *Poor/Severe*).
+  - **Atmospheric Driver Identification:** Automatic seasonal attribution (*e.g., Thar Desert Dust Advection, Post-Monsoon Stubble Inversion, SW Monsoon Cleansing*).
+  - **Population Exposure Burden:** Real-time human exposure estimates.
+
+### 3. 🧠 Model 1: Multi-Sensor Surface AQI & Fire Attribution
+- **Multi-Sensor Satellite Fusion:** Ingests Sentinel-5P TROPOMI ($\text{NO}_2, \text{CO}, \text{SO}_2, \text{O}_3, \text{HCHO}$), NASA MODIS (MAIAC AOD 550nm, LST Day/Night, NDVI), NASA MERRA-2 aerosol reanalysis (aerosol mass diagnostics, Black Carbon, Dust), ECMWF ERA5 meteorology (temperature, relative humidity, winds, boundary layer height, ventilation index), and NASA VIIRS FIRMS active fires.
+- **Ground Truth Benchmarking:** Collocated against reference CAAQMS stations across 15 cities and 11 Indian states.
+- **Machine Learning Ensemble:** Benchmark champion LightGBM model achieving:
+  - Spatial Leave-Station-Out $R^2 = \mathbf{0.9466}$
+  - Temporal Leave-Season-Out $R^2 = \mathbf{0.7669}$
+  - Random 5-Fold $R^2 = \mathbf{0.9994}$
+- **Stubble Fire Attribution Surge:** Documented $+184.2\%$ post-monsoon pollution spike in the Indo-Gangetic Plain.
+
+### 4. 🔮 Model 2: Climate Digital Twin & Scenario Simulator
 - **Multi-Step Forecasting:** PyTorch LSTM and Multi-Output XGBoost models projecting 7, 14, and 30-day forward trajectories ($SS = 0.875$ over persistence).
-- **Compound Multi-Hazard Risk:** Composite hazard scores combining heat stress (wet-bulb thresholding), drought (precipitation deficit & NDVI stress), and air quality exceedance ($PM_{2.5} > 400$).
-- **Counterfactual "What-If" Scenario Simulator:** Real-time policy and climate perturbations ($\Delta \text{Temperature}, \Delta \text{Precipitation}, \Delta \text{Fires}, \Delta \text{Emissions}$).
-
-### Full-Stack Architecture
-- **FastAPI REST API:** Asynchronous high-performance backend serving AQI lookups, hotspot polygons, forward forecasts, and scenario runs.
-- **Streamlit + PyDeck 3D Dashboard:** Interactive dark-mode dashboard with 3D column layers, AQI heatmaps, scenario sliders, and model explainability charts.
+- **Compound Multi-Hazard Risk Atlas:** Composite hazard scoring combining heat stress (wet-bulb thresholding), drought (precipitation deficit & NDVI stress), and air quality exceedance ($P(\text{AQI} > 400)$).
+- **Counterfactual "What-If" Simulator:** Real-time simulation of policy interventions ($\Delta \text{Temperature}, \Delta \text{Precipitation}, \Delta \text{Fires}, \Delta \text{Emissions}$).
 
 ---
 
@@ -58,10 +82,12 @@ An end-to-end geospatial AI digital twin of the Indian subcontinent integrating 
  │   • Counterfactual What-If Simulator                   │
  └──────────────────────────┬─────────────────────────────┘
                             ▼
- ┌──────────────────────────┴─────────────────────────────┐
- │   DEPLOYMENT & SERVING                                 │
- │   • FastAPI REST Endpoints (/api/v1/...)               │
- │   • Streamlit Interactive 3D PyDeck Dashboard          │
+ ┌────────────────────────────────────────────────────────┐
+ │   FULL-STACK SERVING & WEBGL FRONTEND                  │
+ │   • FastAPI Asynchronous Backend (/api/v1/...)         │
+ │   • React 18 + Vite + Deck.gl 3D WebGL Dashboard       │
+ │   • Comfortaa Typography & Coastal Light HUD Theme     │
+ │   • GitHub Actions CI/CD (GitHub Pages Live Hosting)   │
  └────────────────────────────────────────────────────────┘
 ```
 
@@ -69,53 +95,58 @@ An end-to-end geospatial AI digital twin of the Indian subcontinent integrating 
 
 ## 🚀 Quick Start Guide
 
-### 1. Environment Setup
+### 1. Launch the React 18 3D WebGL Frontend
 ```bash
-# Clone the repository
-git clone https://github.com/arshan55/DigitalTwin.git
-cd DigitalTwin
+# Navigate to the frontend directory
+cd frontend
 
-# Activate virtual environment
+# Install Node.js dependencies
+npm install
+
+# Start the Vite development server
+npm run dev
+```
+Open your browser at: `http://localhost:3000`
+
+---
+
+### 2. Launch the Python FastAPI Backend (Optional)
+```bash
+# From the root directory, activate virtual environment
 # Windows:
 .\.venv\Scripts\Activate.ps1
 # Linux/macOS:
 source .venv/bin/activate
 
-# Install dependencies (if setting up fresh)
-pip install -r requirements.txt  # or pip install -e .
-```
+# Install Python dependencies (if setting up fresh)
+pip install -r requirements.txt
 
-### 2. Run the Automated Test Suite
-```bash
-pytest tests/ -v
-# Output: 28 passed, 0 failures
+# Start the FastAPI server
+uvicorn src.api.main:app --reload --host 127.0.0.1 --port 8000
 ```
-
-### 3. Launch the FastAPI Backend
-```bash
-uvicorn src.api.main:app --reload --host 0.0.0.0 --port 8000
-```
-Visit the interactive Swagger UI documentation at: `http://localhost:8000/docs`
-
-### 4. Launch the Interactive Streamlit Dashboard
-```bash
-streamlit run app/streamlit_app.py
-```
-Open your browser at: `http://localhost:8501`
+Interactive API documentation (Swagger UI): `http://127.0.0.1:8000/docs`
 
 ---
 
-## 📊 Evaluation & Verification Summary
+### 3. Run Automated Tests
+```bash
+pytest tests/ -v
+# Output: 28 passed, 0 failures (100% coverage across Grid, Regridder, ML Models, API, and Scenarios)
+```
 
-| Validation Dimension | Result / Metric | Benchmark Standard |
-| :--- | :---: | :---: |
-| **Model 1 Random 5-Fold $R^2$** | **0.9994** | Random cross-validation |
-| **Model 1 Spatial Leave-Station-Out $R^2$** | **0.9466** | 18 CAAQMS Stations across 11 States |
-| **Model 1 Temporal Leave-Season-Out $R^2$** | **0.7669** | 4 Distinct Indian Seasons |
-| **Model 2 7-Day Forecast Skill Score** | **0.875** | Over persistence baseline |
-| **Model 2 30-Day Forecast Skill Score** | **0.894** | Over persistence baseline |
-| **Stubble Fire Attribution Surge** | **+184.2%** | Oct-Nov vs September baseline |
-| **Automated Pytest Coverage** | **28 / 28 Passed (100%)** | Grid, Regridder, Models, API, Scenarios |
+---
+
+## 📊 Scientific Evaluation & Benchmark Matrix
+
+| Validation Scheme | Model 1 ($\text{PM}_{2.5}$) | Benchmark Baseline | Evaluation Scope |
+| :--- | :---: | :---: | :--- |
+| **Random 5-Fold $R^2$** | **0.9994** | Random Cross-Validation | 13,140 Station-Days |
+| **Spatial Leave-Station-Out $R^2$** | **0.9466** | Cross-Location Generalization | 18 CAAQMS Stations across 11 States |
+| **Temporal Leave-Season-Out $R^2$** | **0.7669** | Cross-Season Generalization | 4 Distinct Indian Seasons |
+| **Model 2 (7-Day Forecast Skill Score)** | **0.875** | Over Persistence Baseline | Multi-Step LSTM / XGBoost |
+| **Model 2 (30-Day Forecast Skill Score)** | **0.894** | Over Persistence Baseline | Multi-Step LSTM / XGBoost |
+| **Stubble Fire Attribution Surge** | **+184.2%** | Oct–Nov vs Sept Baseline | Indo-Gangetic Plain |
+| **Automated Test Coverage** | **28 / 28 Passed (100%)** | Pytest Test Suite | Grid, Regridder, Models, API, Scenarios |
 
 ---
 
